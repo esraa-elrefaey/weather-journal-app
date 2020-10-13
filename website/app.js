@@ -47,10 +47,11 @@ let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
   const getWeather = async (baseUrl,zipCode,keyApi) => {
 
 
-  const response = await fetch(baseUrl + zipCode+ ',us' + keyApi);
+  const response = await fetch(baseUrl + zipCode+ ',us' + keyApi+'&units=metric');
 
   try {
        const newData = await response.json();
+       console.log(newData);
        return newData ;
   }
   catch (error) {
@@ -78,6 +79,7 @@ const postData = async (url = '', data = {}) => {
   try {
     const newEntery = await req.json();
     return newEntery;
+    console.log(newEntery);
   }
   catch (error) {
     console.log('error',error);
@@ -92,9 +94,10 @@ const uptadeUI = async () => {
   try {
 
        const  dataAll= await request.json();
+       console.log(dataAll);
        document.getElementById('date').innerHTML='Date: ' +dataAll.date;
        document.getElementById('temp').innerHTML='Temperature: ' +dataAll.temp;
-       document.getElementById('content').innerHTML='Description: '+dataAll.content;
+       document.getElementById('content').innerHTML='Description:     '+dataAll.content;
 
   }
   catch (error) {
