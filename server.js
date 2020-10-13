@@ -41,17 +41,15 @@ app.get('/all',allData);
 function allData (request,response)
 {
   response.send(projectData);
-}
-
-
-
+  console.log(projectData);
+};
 
 // add a POST route that adds incoming data to projectData
 app.post('/add' ,addData);
 function addData (req,res) 
   {
   let entryData = req.body;
-    console,log(entryData);
+    console.log(entryData);
 
     // temp => Temperature
     // content => user's input
@@ -60,6 +58,7 @@ projectData.date= entryData.date;
 projectData.temp= entryData.temp;
 projectData.content= entryData.content;
 
-  // res.send(projectData);
-  req.end();
+  res.send(projectData);
+ 
+  console.log(projectData);
 }
